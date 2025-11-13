@@ -124,6 +124,96 @@
       font-size: 11px;
       margin-top: 6px;
     }
+
+    /* Custom Font Picker */
+    .font-picker {
+      position: relative;
+      width: 100%;
+    }
+
+    .font-picker-button {
+      width: 100%;
+      padding: 6px 8px;
+      text-align: left;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .font-picker-button:hover {
+      border-color: #999;
+    }
+
+    .font-picker-button::after {
+      content: '▼';
+      font-size: 10px;
+      color: #666;
+    }
+
+    .font-picker-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      max-height: 300px;
+      overflow-y: auto;
+      z-index: 1000;
+      display: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .font-picker-dropdown.open {
+      display: block;
+    }
+
+    .font-category {
+      padding: 6px 10px;
+      background: #f0f0f0;
+      font-size: 11px;
+      font-weight: 600;
+      color: #555;
+      border-top: 1px solid #ddd;
+    }
+
+    .font-category:first-child {
+      border-top: none;
+    }
+
+    .font-option {
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .font-option:hover {
+      background: #e8f0fe;
+    }
+
+    .font-option.selected {
+      background: #d0e4ff;
+    }
+
+    .font-option-preview {
+      flex: 1;
+    }
+
+    .font-option-name {
+      font-size: 11px;
+      color: #666;
+      font-style: italic;
+    }
   </style>
 </head>
 <body>
@@ -144,96 +234,14 @@
         <label for="topText">Text</label>
         <input id="topText" type="text" value="FS Minerals Ltd." />
 
-        <label for="topFont">Font family</label>
-        <select id="topFont">
-          <optgroup label="Sans Serif">
-            <option value="Arial, sans-serif">Arial</option>
-            <option value="'Arial Black', sans-serif">Arial Black</option>
-            <option value="'Arial Narrow', sans-serif">Arial Narrow</option>
-            <option value="'Arial Rounded MT Bold', sans-serif">Arial Rounded MT Bold</option>
-            <option value="Bahnschrift, sans-serif">Bahnschrift</option>
-            <option value="Calibri, sans-serif">Calibri</option>
-            <option value="Candara, sans-serif">Candara</option>
-            <option value="'Century Gothic', sans-serif">Century Gothic</option>
-            <option value="'Franklin Gothic Medium', sans-serif">Franklin Gothic Medium</option>
-            <option value="'Gill Sans MT', sans-serif">Gill Sans MT</option>
-            <option value="Impact, sans-serif">Impact</option>
-            <option value="'Lucida Sans Unicode', sans-serif">Lucida Sans Unicode</option>
-            <option value="'Segoe UI', sans-serif">Segoe UI</option>
-            <option value="Tahoma, sans-serif">Tahoma</option>
-            <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
-            <option value="Verdana, sans-serif">Verdana</option>
-          </optgroup>
-          <optgroup label="Serif">
-            <option value="'Book Antiqua', serif">Book Antiqua</option>
-            <option value="'Bookman Old Style', serif">Bookman Old Style</option>
-            <option value="Cambria, serif">Cambria</option>
-            <option value="'Century Schoolbook', serif">Century Schoolbook</option>
-            <option value="Constantia, serif">Constantia</option>
-            <option value="Garamond, serif">Garamond</option>
-            <option value="Georgia, serif">Georgia</option>
-            <option value="'Goudy Old Style', serif">Goudy Old Style</option>
-            <option value="'Lucida Bright', serif">Lucida Bright</option>
-            <option value="'Palatino Linotype', serif">Palatino Linotype</option>
-            <option value="Perpetua, serif">Perpetua</option>
-            <option value="Rockwell, serif">Rockwell</option>
-            <option value="'Times New Roman', serif">Times New Roman</option>
-          </optgroup>
-          <optgroup label="Slab Serif">
-            <option value="'Rockwell Condensed', serif">Rockwell Condensed</option>
-            <option value="'Rockwell Extra Bold', serif">Rockwell Extra Bold</option>
-          </optgroup>
-          <optgroup label="Script">
-            <option value="'Brush Script MT', cursive">Brush Script MT</option>
-            <option value="'Edwardian Script ITC', cursive">Edwardian Script ITC</option>
-            <option value="'Freestyle Script', cursive">Freestyle Script</option>
-            <option value="'French Script MT', cursive">French Script MT</option>
-            <option value="Gabriola, cursive">Gabriola</option>
-            <option value="'Kunstler Script', cursive">Kunstler Script</option>
-            <option value="'Lucida Handwriting', cursive">Lucida Handwriting</option>
-            <option value="'Monotype Corsiva', cursive">Monotype Corsiva</option>
-            <option value="'Palace Script MT', cursive">Palace Script MT</option>
-            <option value="Papyrus, cursive">Papyrus</option>
-            <option value="'Rage Italic', cursive">Rage Italic</option>
-            <option value="'Segoe Script', cursive">Segoe Script</option>
-            <option value="Vivaldi, cursive">Vivaldi</option>
-            <option value="'Vladimir Script', cursive">Vladimir Script</option>
-          </optgroup>
-          <optgroup label="Handwritten">
-            <option value="'Bradley Hand ITC', cursive">Bradley Hand ITC</option>
-            <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
-            <option value="'Ink Free', cursive">Ink Free</option>
-            <option value="'Kristen ITC', cursive">Kristen ITC</option>
-            <option value="'Segoe Print', cursive">Segoe Print</option>
-            <option value="'Viner Hand ITC', cursive">Viner Hand ITC</option>
-          </optgroup>
-          <optgroup label="Monospace">
-            <option value="'Cascadia Code', monospace">Cascadia Code</option>
-            <option value="'Cascadia Mono', monospace">Cascadia Mono</option>
-            <option value="Consolas, monospace">Consolas</option>
-            <option value="'Courier New', monospace">Courier New</option>
-            <option value="'Lucida Console', monospace">Lucida Console</option>
-            <option value="'Lucida Sans Typewriter', monospace">Lucida Sans Typewriter</option>
-            <option value="'Source Code Pro', monospace">Source Code Pro</option>
-          </optgroup>
-          <optgroup label="Blackletter">
-            <option value="'Old English Text MT', fantasy">Old English Text MT</option>
-          </optgroup>
-          <optgroup label="Decorative">
-            <option value="Algerian, fantasy">Algerian</option>
-            <option value="'Bauhaus 93', fantasy">Bauhaus 93</option>
-            <option value="Broadway, fantasy">Broadway</option>
-            <option value="Chiller, fantasy">Chiller</option>
-            <option value="'Cooper Black', fantasy">Cooper Black</option>
-            <option value="'Curlz MT', fantasy">Curlz MT</option>
-            <option value="Harrington, fantasy">Harrington</option>
-            <option value="Jokerman, fantasy">Jokerman</option>
-            <option value="'Permanent Marker', fantasy">Permanent Marker</option>
-            <option value="Ravie, fantasy">Ravie</option>
-            <option value="'Showcard Gothic', fantasy">Showcard Gothic</option>
-            <option value="Stencil, fantasy">Stencil</option>
-          </optgroup>
-        </select>
+        <label>Font family</label>
+        <div class="font-picker" id="topFontPicker">
+          <button type="button" class="font-picker-button" id="topFontButton">
+            <span id="topFontDisplay">Arial</span>
+          </button>
+          <div class="font-picker-dropdown" id="topFontDropdown"></div>
+        </div>
+        <input type="hidden" id="topFont" value="Arial, sans-serif" />
 
         <label for="topSize">Font size (px)</label>
         <input id="topSize" type="number" min="8" max="120" value="32" />
@@ -258,96 +266,14 @@
         <label for="bottomText">Text</label>
         <input id="bottomText" type="text" value="Fort Worth, Texas" />
 
-        <label for="bottomFont">Font family</label>
-        <select id="bottomFont">
-          <optgroup label="Sans Serif">
-            <option value="Arial, sans-serif">Arial</option>
-            <option value="'Arial Black', sans-serif">Arial Black</option>
-            <option value="'Arial Narrow', sans-serif">Arial Narrow</option>
-            <option value="'Arial Rounded MT Bold', sans-serif">Arial Rounded MT Bold</option>
-            <option value="Bahnschrift, sans-serif">Bahnschrift</option>
-            <option value="Calibri, sans-serif">Calibri</option>
-            <option value="Candara, sans-serif">Candara</option>
-            <option value="'Century Gothic', sans-serif">Century Gothic</option>
-            <option value="'Franklin Gothic Medium', sans-serif">Franklin Gothic Medium</option>
-            <option value="'Gill Sans MT', sans-serif">Gill Sans MT</option>
-            <option value="Impact, sans-serif">Impact</option>
-            <option value="'Lucida Sans Unicode', sans-serif">Lucida Sans Unicode</option>
-            <option value="'Segoe UI', sans-serif">Segoe UI</option>
-            <option value="Tahoma, sans-serif">Tahoma</option>
-            <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
-            <option value="Verdana, sans-serif">Verdana</option>
-          </optgroup>
-          <optgroup label="Serif">
-            <option value="'Book Antiqua', serif">Book Antiqua</option>
-            <option value="'Bookman Old Style', serif">Bookman Old Style</option>
-            <option value="Cambria, serif">Cambria</option>
-            <option value="'Century Schoolbook', serif">Century Schoolbook</option>
-            <option value="Constantia, serif">Constantia</option>
-            <option value="Garamond, serif">Garamond</option>
-            <option value="Georgia, serif">Georgia</option>
-            <option value="'Goudy Old Style', serif">Goudy Old Style</option>
-            <option value="'Lucida Bright', serif">Lucida Bright</option>
-            <option value="'Palatino Linotype', serif">Palatino Linotype</option>
-            <option value="Perpetua, serif">Perpetua</option>
-            <option value="Rockwell, serif">Rockwell</option>
-            <option value="'Times New Roman', serif">Times New Roman</option>
-          </optgroup>
-          <optgroup label="Slab Serif">
-            <option value="'Rockwell Condensed', serif">Rockwell Condensed</option>
-            <option value="'Rockwell Extra Bold', serif">Rockwell Extra Bold</option>
-          </optgroup>
-          <optgroup label="Script">
-            <option value="'Brush Script MT', cursive">Brush Script MT</option>
-            <option value="'Edwardian Script ITC', cursive">Edwardian Script ITC</option>
-            <option value="'Freestyle Script', cursive">Freestyle Script</option>
-            <option value="'French Script MT', cursive">French Script MT</option>
-            <option value="Gabriola, cursive">Gabriola</option>
-            <option value="'Kunstler Script', cursive">Kunstler Script</option>
-            <option value="'Lucida Handwriting', cursive">Lucida Handwriting</option>
-            <option value="'Monotype Corsiva', cursive">Monotype Corsiva</option>
-            <option value="'Palace Script MT', cursive">Palace Script MT</option>
-            <option value="Papyrus, cursive">Papyrus</option>
-            <option value="'Rage Italic', cursive">Rage Italic</option>
-            <option value="'Segoe Script', cursive">Segoe Script</option>
-            <option value="Vivaldi, cursive">Vivaldi</option>
-            <option value="'Vladimir Script', cursive">Vladimir Script</option>
-          </optgroup>
-          <optgroup label="Handwritten">
-            <option value="'Bradley Hand ITC', cursive">Bradley Hand ITC</option>
-            <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
-            <option value="'Ink Free', cursive">Ink Free</option>
-            <option value="'Kristen ITC', cursive">Kristen ITC</option>
-            <option value="'Segoe Print', cursive">Segoe Print</option>
-            <option value="'Viner Hand ITC', cursive">Viner Hand ITC</option>
-          </optgroup>
-          <optgroup label="Monospace">
-            <option value="'Cascadia Code', monospace">Cascadia Code</option>
-            <option value="'Cascadia Mono', monospace">Cascadia Mono</option>
-            <option value="Consolas, monospace">Consolas</option>
-            <option value="'Courier New', monospace">Courier New</option>
-            <option value="'Lucida Console', monospace">Lucida Console</option>
-            <option value="'Lucida Sans Typewriter', monospace">Lucida Sans Typewriter</option>
-            <option value="'Source Code Pro', monospace">Source Code Pro</option>
-          </optgroup>
-          <optgroup label="Blackletter">
-            <option value="'Old English Text MT', fantasy">Old English Text MT</option>
-          </optgroup>
-          <optgroup label="Decorative">
-            <option value="Algerian, fantasy">Algerian</option>
-            <option value="'Bauhaus 93', fantasy">Bauhaus 93</option>
-            <option value="Broadway, fantasy">Broadway</option>
-            <option value="Chiller, fantasy">Chiller</option>
-            <option value="'Cooper Black', fantasy">Cooper Black</option>
-            <option value="'Curlz MT', fantasy">Curlz MT</option>
-            <option value="Harrington, fantasy">Harrington</option>
-            <option value="Jokerman, fantasy">Jokerman</option>
-            <option value="'Permanent Marker', fantasy">Permanent Marker</option>
-            <option value="Ravie, fantasy">Ravie</option>
-            <option value="'Showcard Gothic', fantasy">Showcard Gothic</option>
-            <option value="Stencil, fantasy">Stencil</option>
-          </optgroup>
-        </select>
+        <label>Font family</label>
+        <div class="font-picker" id="bottomFontPicker">
+          <button type="button" class="font-picker-button" id="bottomFontButton">
+            <span id="bottomFontDisplay">Arial</span>
+          </button>
+          <div class="font-picker-dropdown" id="bottomFontDropdown"></div>
+        </div>
+        <input type="hidden" id="bottomFont" value="Arial, sans-serif" />
 
         <label for="bottomSize">Font size (px)</label>
         <input id="bottomSize" type="number" min="8" max="120" value="20" />
@@ -378,6 +304,97 @@
   </div>
 
   <script>
+    // Font database organized by category
+    const fontDatabase = {
+      'Sans Serif': [
+        { name: 'Arial', value: 'Arial, sans-serif' },
+        { name: 'Arial Black', value: "'Arial Black', sans-serif" },
+        { name: 'Arial Narrow', value: "'Arial Narrow', sans-serif" },
+        { name: 'Arial Rounded MT Bold', value: "'Arial Rounded MT Bold', sans-serif" },
+        { name: 'Bahnschrift', value: 'Bahnschrift, sans-serif' },
+        { name: 'Calibri', value: 'Calibri, sans-serif' },
+        { name: 'Candara', value: 'Candara, sans-serif' },
+        { name: 'Century Gothic', value: "'Century Gothic', sans-serif" },
+        { name: 'Franklin Gothic Medium', value: "'Franklin Gothic Medium', sans-serif" },
+        { name: 'Gill Sans MT', value: "'Gill Sans MT', sans-serif" },
+        { name: 'Impact', value: 'Impact, sans-serif' },
+        { name: 'Lucida Sans Unicode', value: "'Lucida Sans Unicode', sans-serif" },
+        { name: 'Segoe UI', value: "'Segoe UI', sans-serif" },
+        { name: 'Tahoma', value: 'Tahoma, sans-serif' },
+        { name: 'Trebuchet MS', value: "'Trebuchet MS', sans-serif" },
+        { name: 'Verdana', value: 'Verdana, sans-serif' }
+      ],
+      'Serif': [
+        { name: 'Book Antiqua', value: "'Book Antiqua', serif" },
+        { name: 'Bookman Old Style', value: "'Bookman Old Style', serif" },
+        { name: 'Cambria', value: 'Cambria, serif' },
+        { name: 'Century Schoolbook', value: "'Century Schoolbook', serif" },
+        { name: 'Constantia', value: 'Constantia, serif' },
+        { name: 'Garamond', value: 'Garamond, serif' },
+        { name: 'Georgia', value: 'Georgia, serif' },
+        { name: 'Goudy Old Style', value: "'Goudy Old Style', serif" },
+        { name: 'Lucida Bright', value: "'Lucida Bright', serif" },
+        { name: 'Palatino Linotype', value: "'Palatino Linotype', serif" },
+        { name: 'Perpetua', value: 'Perpetua, serif' },
+        { name: 'Rockwell', value: 'Rockwell, serif' },
+        { name: 'Times New Roman', value: "'Times New Roman', serif" }
+      ],
+      'Slab Serif': [
+        { name: 'Rockwell Condensed', value: "'Rockwell Condensed', serif" },
+        { name: 'Rockwell Extra Bold', value: "'Rockwell Extra Bold', serif" }
+      ],
+      'Script': [
+        { name: 'Brush Script MT', value: "'Brush Script MT', cursive" },
+        { name: 'Edwardian Script ITC', value: "'Edwardian Script ITC', cursive" },
+        { name: 'Freestyle Script', value: "'Freestyle Script', cursive" },
+        { name: 'French Script MT', value: "'French Script MT', cursive" },
+        { name: 'Gabriola', value: 'Gabriola, cursive' },
+        { name: 'Kunstler Script', value: "'Kunstler Script', cursive" },
+        { name: 'Lucida Handwriting', value: "'Lucida Handwriting', cursive" },
+        { name: 'Monotype Corsiva', value: "'Monotype Corsiva', cursive" },
+        { name: 'Palace Script MT', value: "'Palace Script MT', cursive" },
+        { name: 'Papyrus', value: 'Papyrus, cursive' },
+        { name: 'Rage Italic', value: "'Rage Italic', cursive" },
+        { name: 'Segoe Script', value: "'Segoe Script', cursive" },
+        { name: 'Vivaldi', value: 'Vivaldi, cursive' },
+        { name: 'Vladimir Script', value: "'Vladimir Script', cursive" }
+      ],
+      'Handwritten': [
+        { name: 'Bradley Hand ITC', value: "'Bradley Hand ITC', cursive" },
+        { name: 'Comic Sans MS', value: "'Comic Sans MS', cursive" },
+        { name: 'Ink Free', value: "'Ink Free', cursive" },
+        { name: 'Kristen ITC', value: "'Kristen ITC', cursive" },
+        { name: 'Segoe Print', value: "'Segoe Print', cursive" },
+        { name: 'Viner Hand ITC', value: "'Viner Hand ITC', cursive" }
+      ],
+      'Monospace': [
+        { name: 'Cascadia Code', value: "'Cascadia Code', monospace" },
+        { name: 'Cascadia Mono', value: "'Cascadia Mono', monospace" },
+        { name: 'Consolas', value: 'Consolas, monospace' },
+        { name: 'Courier New', value: "'Courier New', monospace" },
+        { name: 'Lucida Console', value: "'Lucida Console', monospace" },
+        { name: 'Lucida Sans Typewriter', value: "'Lucida Sans Typewriter', monospace" },
+        { name: 'Source Code Pro', value: "'Source Code Pro', monospace" }
+      ],
+      'Blackletter': [
+        { name: 'Old English Text MT', value: "'Old English Text MT', fantasy" }
+      ],
+      'Decorative': [
+        { name: 'Algerian', value: 'Algerian, fantasy' },
+        { name: 'Bauhaus 93', value: "'Bauhaus 93', fantasy" },
+        { name: 'Broadway', value: 'Broadway, fantasy' },
+        { name: 'Chiller', value: 'Chiller, fantasy' },
+        { name: 'Cooper Black', value: "'Cooper Black', fantasy" },
+        { name: 'Curlz MT', value: "'Curlz MT', fantasy" },
+        { name: 'Harrington', value: 'Harrington, fantasy' },
+        { name: 'Jokerman', value: 'Jokerman, fantasy' },
+        { name: 'Permanent Marker', value: "'Permanent Marker', fantasy" },
+        { name: 'Ravie', value: 'Ravie, fantasy' },
+        { name: 'Showcard Gothic', value: "'Showcard Gothic', fantasy" },
+        { name: 'Stencil', value: 'Stencil, fantasy' }
+      ]
+    };
+
     const els = {
       topText: document.getElementById("topText"),
       topFont: document.getElementById("topFont"),
@@ -396,8 +413,64 @@
       topPreview: document.getElementById("topPreview"),
       bottomPreview: document.getElementById("bottomPreview"),
       copySettings: document.getElementById("copySettings"),
-      settingsOutput: document.getElementById("settingsOutput")
+      settingsOutput: document.getElementById("settingsOutput"),
+      topFontButton: document.getElementById("topFontButton"),
+      topFontDisplay: document.getElementById("topFontDisplay"),
+      topFontDropdown: document.getElementById("topFontDropdown"),
+      bottomFontButton: document.getElementById("bottomFontButton"),
+      bottomFontDisplay: document.getElementById("bottomFontDisplay"),
+      bottomFontDropdown: document.getElementById("bottomFontDropdown")
     };
+
+    // Create font picker dropdown
+    function createFontPicker(dropdownEl, hiddenInput, displayEl) {
+      let html = '';
+      for (const [category, fonts] of Object.entries(fontDatabase)) {
+        html += `<div class="font-category">${category}</div>`;
+        for (const font of fonts) {
+          html += `<div class="font-option" data-value="${font.value}" data-name="${font.name}">
+            <span class="font-option-preview" style="font-family: ${font.value}">Sample</span>
+            <span class="font-option-name">${font.name}</span>
+          </div>`;
+        }
+      }
+      dropdownEl.innerHTML = html;
+
+      // Handle font selection
+      dropdownEl.querySelectorAll('.font-option').forEach(option => {
+        option.addEventListener('click', () => {
+          const value = option.getAttribute('data-value');
+          const name = option.getAttribute('data-name');
+          hiddenInput.value = value;
+          displayEl.textContent = name;
+          dropdownEl.classList.remove('open');
+          updatePreview();
+        });
+      });
+    }
+
+    // Initialize font pickers
+    createFontPicker(els.topFontDropdown, els.topFont, els.topFontDisplay);
+    createFontPicker(els.bottomFontDropdown, els.bottomFont, els.bottomFontDisplay);
+
+    // Toggle dropdowns
+    els.topFontButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      els.topFontDropdown.classList.toggle('open');
+      els.bottomFontDropdown.classList.remove('open');
+    });
+
+    els.bottomFontButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      els.bottomFontDropdown.classList.toggle('open');
+      els.topFontDropdown.classList.remove('open');
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', () => {
+      els.topFontDropdown.classList.remove('open');
+      els.bottomFontDropdown.classList.remove('open');
+    });
 
     function hexFromInput(str) {
       let v = str.trim();

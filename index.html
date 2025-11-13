@@ -205,14 +205,17 @@
       background: #d0e4ff;
     }
 
-    .font-option-preview {
-      flex: 1;
+    .font-option-name {
+      font-size: 12px;
+      color: #333;
+      min-width: 140px;
     }
 
-    .font-option-name {
-      font-size: 11px;
-      color: #666;
+    .font-option-preview {
+      flex: 1;
+      text-align: right;
       font-style: italic;
+      color: #666;
     }
 
     /* Expandable font families */
@@ -241,14 +244,17 @@
       transform: rotate(90deg);
     }
 
-    .font-family-preview {
-      flex: 1;
+    .font-family-name {
+      font-size: 12px;
+      color: #333;
+      min-width: 140px;
     }
 
-    .font-family-name {
-      font-size: 11px;
-      color: #666;
+    .font-family-preview {
+      flex: 1;
+      text-align: right;
       font-style: italic;
+      color: #666;
     }
 
     .font-variants {
@@ -278,13 +284,17 @@
       background: #d0e4ff;
     }
 
-    .font-variant-preview {
-      flex: 1;
+    .font-variant-name {
+      font-size: 11px;
+      color: #555;
+      min-width: 100px;
     }
 
-    .font-variant-name {
-      font-size: 10px;
-      color: #888;
+    .font-variant-preview {
+      flex: 1;
+      text-align: right;
+      font-style: italic;
+      color: #666;
     }
   </style>
 </head>
@@ -520,14 +530,14 @@
           if (font.variants && font.variants.length > 1) {
             html += `<div class="font-family" data-family-id="${familyId}">
               <span class="font-family-expand">►</span>
-              <span class="font-family-preview" style="font-family: ${font.variants[0].value}">Sample</span>
               <span class="font-family-name">${font.name}</span>
+              <span class="font-family-preview" style="font-family: ${font.variants[0].value}">Sample</span>
             </div>`;
             html += `<div class="font-variants" id="${familyId}-variants">`;
             for (const variant of font.variants) {
               html += `<div class="font-variant" data-value="${variant.value}" data-name="${font.name} ${variant.name}">
-                <span class="font-variant-preview" style="font-family: ${variant.value}; font-weight: ${variant.weight}">Sample</span>
                 <span class="font-variant-name">${variant.name}</span>
+                <span class="font-variant-preview" style="font-family: ${variant.value}; font-weight: ${variant.weight}">Sample</span>
               </div>`;
             }
             html += `</div>`;
@@ -535,8 +545,8 @@
             // Single variant fonts don't expand
             const variant = font.variants[0];
             html += `<div class="font-option" data-value="${variant.value}" data-name="${font.name}">
-              <span class="font-option-preview" style="font-family: ${variant.value}">Sample</span>
               <span class="font-option-name">${font.name}</span>
+              <span class="font-option-preview" style="font-family: ${variant.value}">Sample</span>
             </div>`;
           }
         }

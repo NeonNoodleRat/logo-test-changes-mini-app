@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(nul)"
+      "Bash(nul)",
+      "Bash(powershell -ExecutionPolicy Bypass -File list-fonts.ps1)",
+      "Bash(fonts.txt)"
     ],
     "deny": [],
     "ask": []

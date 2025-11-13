@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FS Minerals Logo Font Tester</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .layout {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .logo-preview-wrapper {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Adjust width/height to match your logo image ratio */
+    .logo-preview {
+      position: relative;
+      width: 600px;
+      height: 400px;
+      background: white url("logo-base.jpg") no-repeat center left;
+      background-size: contain;
+      border: 1px solid #ddd;
+    }
+
+    .top-text,
+    .bottom-text {
+      position: absolute;
+      white-space: nowrap;
+    }
+
+    /* Approximate positions – tweak for your design */
+    .top-text {
+      left: 310px;
+      top: 185px;
+    }
+
+    .bottom-text {
+      left: 315px;
+      top: 235px;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 320px;
+    }
+
+    fieldset {
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      padding: 10px 12px 14px;
+      background: #fff;
+    }
+
+    legend {
+      padding: 0 4px;
+      font-weight: 600;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      margin-top: 6px;
+      margin-bottom: 2px;
+    }
+
+    input[type="text"],
+    select,
+    input[type="number"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 4px 6px;
+      font-size: 13px;
+    }
+
+    input[type="color"] {
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    button {
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      border: 1px solid #666;
+      background: #fff;
+    }
+
+    .small-note {
+      font-size: 11px;
+      color: #555;
+    }
+
+    textarea {
+      width: 100%;
+      height: 80px;
+      box-sizing: border-box;
+      font-size: 11px;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>FS Minerals Logo – Font & Color Playground</h1>
+  <div class="layout">
+    <!-- Preview -->
+    <div class="logo-preview-wrapper">
+      <div class="logo-preview">
+        <div id="topPreview" class="top-text">FS Minerals Ltd.</div>
+        <div id="bottomPreview" class="bottom-text">Fort Worth, Texas</div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <fieldset>
+        <legend>Top Text</legend>
+        <label for="topText">Text</label>
+        <input id="topText" type="text" value="FS Minerals Ltd." />
+
+        <label for="topFont">Font family</label>
+        <select id="topFont">
+          <option value="Roboto, sans-serif">Roboto</option>
+          <option value="Arial, sans-serif">Arial</option>
+          <option value="Helvetica, sans-serif">Helvetica</option>
+          <option value="'Times New Roman', serif">Times New Roman</option>
+          <option value="'Georgia', serif">Georgia</option>
+          <!-- Add more here to match your Photoshop fonts -->
+        </select>
+
+        <label for="topSize">Font size (px)</label>
+        <input id="topSize" type="number" min="8" max="120" value="32" />
+
+        <label>Color</label>
+        <div class="row">
+          <input id="topColor" type="color" value="#4c5a6a" />
+          <input id="topColorText" type="text" value="#4c5a6a" />
+        </div>
+
+        <label>Position</label>
+        <div class="row">
+          <label for="topX" style="width: auto; margin: 0;">X:</label>
+          <input id="topX" type="number" min="0" max="800" value="310" style="width: 70px;" />
+          <label for="topY" style="width: auto; margin: 0;">Y:</label>
+          <input id="topY" type="number" min="0" max="600" value="185" style="width: 70px;" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Bottom Text</legend>
+        <label for="bottomText">Text</label>
+        <input id="bottomText" type="text" value="Fort Worth, Texas" />
+
+        <label for="bottomFont">Font family</label>
+        <select id="bottomFont">
+          <option value="Roboto, sans-serif">Roboto</option>
+          <option value="Arial, sans-serif">Arial</option>
+          <option value="Helvetica, sans-serif">Helvetica</option>
+          <option value="'Times New Roman', serif">Times New Roman</option>
+          <option value="'Georgia', serif">Georgia</option>
+        </select>
+
+        <label for="bottomSize">Font size (px)</label>
+        <input id="bottomSize" type="number" min="8" max="120" value="20" />
+
+        <label>Color</label>
+        <div class="row">
+          <input id="bottomColor" type="color" value="#4c5a6a" />
+          <input id="bottomColorText" type="text" value="#4c5a6a" />
+        </div>
+
+        <label>Position</label>
+        <div class="row">
+          <label for="bottomX" style="width: auto; margin: 0;">X:</label>
+          <input id="bottomX" type="number" min="0" max="800" value="315" style="width: 70px;" />
+          <label for="bottomY" style="width: auto; margin: 0;">Y:</label>
+          <input id="bottomY" type="number" min="0" max="600" value="235" style="width: 70px;" />
+        </div>
+      </fieldset>
+
+      <div>
+        <button id="copySettings">Copy settings</button>
+        <div class="small-note">
+          Click this and paste into an email/Slack so I can recreate it in Photoshop.
+        </div>
+        <textarea id="settingsOutput" readonly></textarea>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const els = {
+      topText: document.getElementById("topText"),
+      topFont: document.getElementById("topFont"),
+      topSize: document.getElementById("topSize"),
+      topColor: document.getElementById("topColor"),
+      topColorText: document.getElementById("topColorText"),
+      topX: document.getElementById("topX"),
+      topY: document.getElementById("topY"),
+      bottomText: document.getElementById("bottomText"),
+      bottomFont: document.getElementById("bottomFont"),
+      bottomSize: document.getElementById("bottomSize"),
+      bottomColor: document.getElementById("bottomColor"),
+      bottomColorText: document.getElementById("bottomColorText"),
+      bottomX: document.getElementById("bottomX"),
+      bottomY: document.getElementById("bottomY"),
+      topPreview: document.getElementById("topPreview"),
+      bottomPreview: document.getElementById("bottomPreview"),
+      copySettings: document.getElementById("copySettings"),
+      settingsOutput: document.getElementById("settingsOutput")
+    };
+
+    function hexFromInput(str) {
+      let v = str.trim();
+      if (!v) return null;
+      if (!v.startsWith("#")) v = "#" + v;
+      if (/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(v)) return v;
+      return null;
+    }
+
+    function updatePreview() {
+      // Top
+      els.topPreview.textContent = els.topText.value;
+      els.topPreview.style.fontFamily = els.topFont.value;
+      els.topPreview.style.fontSize = els.topSize.value + "px";
+      els.topPreview.style.color = els.topColor.value;
+      els.topPreview.style.left = els.topX.value + "px";
+      els.topPreview.style.top = els.topY.value + "px";
+
+      // Bottom
+      els.bottomPreview.textContent = els.bottomText.value;
+      els.bottomPreview.style.fontFamily = els.bottomFont.value;
+      els.bottomPreview.style.fontSize = els.bottomSize.value + "px";
+      els.bottomPreview.style.color = els.bottomColor.value;
+      els.bottomPreview.style.left = els.bottomX.value + "px";
+      els.bottomPreview.style.top = els.bottomY.value + "px";
+
+      // Settings text
+      const settings = `
+Top text: "${els.topText.value}"
+Top font: ${els.topFont.options[els.topFont.selectedIndex].text}
+Top size: ${els.topSize.value}px
+Top color: ${els.topColor.value}
+Top position: X=${els.topX.value}px, Y=${els.topY.value}px
+
+Bottom text: "${els.bottomText.value}"
+Bottom font: ${els.bottomFont.options[els.bottomFont.selectedIndex].text}
+Bottom size: ${els.bottomSize.value}px
+Bottom color: ${els.bottomColor.value}
+Bottom position: X=${els.bottomX.value}px, Y=${els.bottomY.value}px
+      `.trim();
+      els.settingsOutput.value = settings;
+    }
+
+    // Wire events
+    [
+      "topText","topFont","topSize","topColor","topX","topY",
+      "bottomText","bottomFont","bottomSize","bottomColor","bottomX","bottomY"
+    ].forEach(id => {
+      els[id].addEventListener("input", updatePreview);
+    });
+
+    // Sync hex text boxes <-> color inputs
+    els.topColor.addEventListener("input", () => {
+      els.topColorText.value = els.topColor.value;
+      updatePreview();
+    });
+    els.topColorText.addEventListener("input", () => {
+      const hex = hexFromInput(els.topColorText.value);
+      if (hex) els.topColor.value = hex;
+      updatePreview();
+    });
+
+    els.bottomColor.addEventListener("input", () => {
+      els.bottomColorText.value = els.bottomColor.value;
+      updatePreview();
+    });
+    els.bottomColorText.addEventListener("input", () => {
+      const hex = hexFromInput(els.bottomColorText.value);
+      if (hex) els.bottomColor.value = hex;
+      updatePreview();
+    });
+
+    els.copySettings.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(els.settingsOutput.value);
+        els.copySettings.textContent = "Copied!";
+        setTimeout(() => els.copySettings.textContent = "Copy settings", 1200);
+      } catch (e) {
+        alert("Could not copy automatically. Select the text below and copy it.");
+      }
+    });
+
+    // Initial render
+    updatePreview();
+  </script>
+</body>
+</html>

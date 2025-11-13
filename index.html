@@ -475,10 +475,18 @@
         {
           name: 'Cascadia Mono',
           variants: [
-            { name: 'Regular', value: "'Cascadia Mono', monospace", weight: 400 },
             { name: 'ExtraLight', value: "'Cascadia Mono ExtraLight', monospace", weight: 200 },
             { name: 'Light', value: "'Cascadia Mono Light', monospace", weight: 300 },
-            { name: 'SemiBold', value: "'Cascadia Mono SemiBold', monospace", weight: 600 }
+            { name: 'SemiLight', value: "'Cascadia Mono SemiLight', monospace", weight: 350 },
+            { name: 'Regular', value: "'Cascadia Mono', monospace", weight: 400 },
+            { name: 'SemiBold', value: "'Cascadia Mono SemiBold', monospace", weight: 600 },
+            { name: 'Bold', value: "'Cascadia Mono Bold', monospace", weight: 700 },
+            { name: 'ExtraLight Italic', value: "'Cascadia Mono ExtraLight', monospace", weight: 200, italic: true },
+            { name: 'Light Italic', value: "'Cascadia Mono Light', monospace", weight: 300, italic: true },
+            { name: 'SemiLight Italic', value: "'Cascadia Mono SemiLight', monospace", weight: 350, italic: true },
+            { name: 'Italic', value: "'Cascadia Mono', monospace", weight: 400, italic: true },
+            { name: 'SemiBold Italic', value: "'Cascadia Mono SemiBold', monospace", weight: 600, italic: true },
+            { name: 'Bold Italic', value: "'Cascadia Mono Bold', monospace", weight: 700, italic: true }
           ]
         },
         { name: 'Consolas', variants: [{ name: 'Regular', value: 'Consolas, monospace', weight: 400 }] },
@@ -535,9 +543,10 @@
             </div>`;
             html += `<div class="font-variants" id="${familyId}-variants">`;
             for (const variant of font.variants) {
+              const italicStyle = variant.italic ? 'font-style: italic;' : '';
               html += `<div class="font-variant" data-value="${variant.value}" data-name="${font.name} ${variant.name}">
                 <span class="font-variant-name">${variant.name}</span>
-                <span class="font-variant-preview" style="font-family: ${variant.value}; font-weight: ${variant.weight}">Sample</span>
+                <span class="font-variant-preview" style="font-family: ${variant.value}; font-weight: ${variant.weight}; ${italicStyle}">Sample</span>
               </div>`;
             }
             html += `</div>`;

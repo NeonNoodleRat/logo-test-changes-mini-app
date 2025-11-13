@@ -348,6 +348,70 @@
     <!-- Controls -->
     <div class="controls">
       <fieldset>
+        <legend>Top Text</legend>
+        <label for="topText">Text</label>
+        <input id="topText" type="text" value="FS Minerals Ltd." />
+
+        <label>Font family</label>
+        <div class="font-picker" id="topFontPicker">
+          <button type="button" class="font-picker-button" id="topFontButton">
+            <span id="topFontDisplay">Arial</span>
+          </button>
+          <div class="font-picker-dropdown" id="topFontDropdown"></div>
+        </div>
+        <input type="hidden" id="topFont" value="Arial, sans-serif" />
+
+        <label for="topSize">Font size (px)</label>
+        <input id="topSize" type="number" min="8" max="120" value="21" />
+
+        <label>Position</label>
+        <div class="row">
+          <label for="topX" style="width: auto; margin: 0;">X:</label>
+          <input id="topX" type="number" min="0" max="800" value="227" style="width: 70px;" />
+          <label for="topY" style="width: auto; margin: 0;">Y:</label>
+          <input id="topY" type="number" min="0" max="600" value="250" style="width: 70px;" />
+        </div>
+
+        <label>Color</label>
+        <div class="row">
+          <input id="topColor" type="color" value="#4c5a6a" />
+          <input id="topColorText" type="text" value="#4c5a6a" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Bottom Text</legend>
+        <label for="bottomText">Text</label>
+        <input id="bottomText" type="text" value="Fort Worth, Texas" />
+
+        <label>Font family</label>
+        <div class="font-picker" id="bottomFontPicker">
+          <button type="button" class="font-picker-button" id="bottomFontButton">
+            <span id="bottomFontDisplay">Arial</span>
+          </button>
+          <div class="font-picker-dropdown" id="bottomFontDropdown"></div>
+        </div>
+        <input type="hidden" id="bottomFont" value="Arial, sans-serif" />
+
+        <label for="bottomSize">Font size (px)</label>
+        <input id="bottomSize" type="number" min="8" max="120" value="12" />
+
+        <label>Position</label>
+        <div class="row">
+          <label for="bottomX" style="width: auto; margin: 0;">X:</label>
+          <input id="bottomX" type="number" min="0" max="800" value="276" style="width: 70px;" />
+          <label for="bottomY" style="width: auto; margin: 0;">Y:</label>
+          <input id="bottomY" type="number" min="0" max="600" value="297" style="width: 70px;" />
+        </div>
+
+        <label>Color</label>
+        <div class="row">
+          <input id="bottomColor" type="color" value="#4c5a6a" />
+          <input id="bottomColorText" type="text" value="#4c5a6a" />
+        </div>
+      </fieldset>
+
+      <fieldset>
         <legend>Logo Color</legend>
         <label>
           <input id="enableLogoRecolor" type="checkbox" />
@@ -376,70 +440,6 @@
         <label for="logoColorOpacity">Tint Opacity (%)</label>
         <input id="logoColorOpacity" type="range" min="0" max="100" value="50" />
         <span id="logoColorOpacityValue">50%</span>
-      </fieldset>
-
-      <fieldset>
-        <legend>Top Text</legend>
-        <label for="topText">Text</label>
-        <input id="topText" type="text" value="FS Minerals Ltd." />
-
-        <label>Font family</label>
-        <div class="font-picker" id="topFontPicker">
-          <button type="button" class="font-picker-button" id="topFontButton">
-            <span id="topFontDisplay">Arial</span>
-          </button>
-          <div class="font-picker-dropdown" id="topFontDropdown"></div>
-        </div>
-        <input type="hidden" id="topFont" value="Arial, sans-serif" />
-
-        <label for="topSize">Font size (px)</label>
-        <input id="topSize" type="number" min="8" max="120" value="32" />
-
-        <label>Color</label>
-        <div class="row">
-          <input id="topColor" type="color" value="#4c5a6a" />
-          <input id="topColorText" type="text" value="#4c5a6a" />
-        </div>
-
-        <label>Position</label>
-        <div class="row">
-          <label for="topX" style="width: auto; margin: 0;">X:</label>
-          <input id="topX" type="number" min="0" max="800" value="227" style="width: 70px;" />
-          <label for="topY" style="width: auto; margin: 0;">Y:</label>
-          <input id="topY" type="number" min="0" max="600" value="250" style="width: 70px;" />
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>Bottom Text</legend>
-        <label for="bottomText">Text</label>
-        <input id="bottomText" type="text" value="Fort Worth, Texas" />
-
-        <label>Font family</label>
-        <div class="font-picker" id="bottomFontPicker">
-          <button type="button" class="font-picker-button" id="bottomFontButton">
-            <span id="bottomFontDisplay">Arial</span>
-          </button>
-          <div class="font-picker-dropdown" id="bottomFontDropdown"></div>
-        </div>
-        <input type="hidden" id="bottomFont" value="Arial, sans-serif" />
-
-        <label for="bottomSize">Font size (px)</label>
-        <input id="bottomSize" type="number" min="8" max="120" value="20" />
-
-        <label>Color</label>
-        <div class="row">
-          <input id="bottomColor" type="color" value="#4c5a6a" />
-          <input id="bottomColorText" type="text" value="#4c5a6a" />
-        </div>
-
-        <label>Position</label>
-        <div class="row">
-          <label for="bottomX" style="width: auto; margin: 0;">X:</label>
-          <input id="bottomX" type="number" min="0" max="800" value="213" style="width: 70px;" />
-          <label for="bottomY" style="width: auto; margin: 0;">Y:</label>
-          <input id="bottomY" type="number" min="0" max="600" value="297" style="width: 70px;" />
-        </div>
       </fieldset>
 
       <div>

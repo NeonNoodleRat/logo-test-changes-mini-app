@@ -214,6 +214,78 @@
       color: #666;
       font-style: italic;
     }
+
+    /* Expandable font families */
+    .font-family {
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .font-family:hover {
+      background: #e8f0fe;
+    }
+
+    .font-family-expand {
+      width: 16px;
+      font-size: 10px;
+      color: #666;
+      transition: transform 0.2s;
+    }
+
+    .font-family.expanded .font-family-expand {
+      transform: rotate(90deg);
+    }
+
+    .font-family-preview {
+      flex: 1;
+    }
+
+    .font-family-name {
+      font-size: 11px;
+      color: #666;
+      font-style: italic;
+    }
+
+    .font-variants {
+      display: none;
+      background: #fafafa;
+    }
+
+    .font-variants.show {
+      display: block;
+    }
+
+    .font-variant {
+      padding: 4px 10px 4px 30px;
+      cursor: pointer;
+      font-size: 13px;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .font-variant:hover {
+      background: #e8f0fe;
+    }
+
+    .font-variant.selected {
+      background: #d0e4ff;
+    }
+
+    .font-variant-preview {
+      flex: 1;
+    }
+
+    .font-variant-name {
+      font-size: 10px;
+      color: #888;
+    }
   </style>
 </head>
 <body>
@@ -304,94 +376,108 @@
   </div>
 
   <script>
-    // Font database organized by category
+    // Font database organized by category with variants
     const fontDatabase = {
       'Sans Serif': [
-        { name: 'Arial', value: 'Arial, sans-serif' },
-        { name: 'Arial Black', value: "'Arial Black', sans-serif" },
-        { name: 'Arial Narrow', value: "'Arial Narrow', sans-serif" },
-        { name: 'Arial Rounded MT Bold', value: "'Arial Rounded MT Bold', sans-serif" },
-        { name: 'Bahnschrift', value: 'Bahnschrift, sans-serif' },
-        { name: 'Calibri', value: 'Calibri, sans-serif' },
-        { name: 'Candara', value: 'Candara, sans-serif' },
-        { name: 'Century Gothic', value: "'Century Gothic', sans-serif" },
-        { name: 'Franklin Gothic Medium', value: "'Franklin Gothic Medium', sans-serif" },
-        { name: 'Gill Sans MT', value: "'Gill Sans MT', sans-serif" },
-        { name: 'Impact', value: 'Impact, sans-serif' },
-        { name: 'Lucida Sans Unicode', value: "'Lucida Sans Unicode', sans-serif" },
-        { name: 'Segoe UI', value: "'Segoe UI', sans-serif" },
-        { name: 'Tahoma', value: 'Tahoma, sans-serif' },
-        { name: 'Trebuchet MS', value: "'Trebuchet MS', sans-serif" },
-        { name: 'Verdana', value: 'Verdana, sans-serif' }
+        {
+          name: 'Arial',
+          variants: [
+            { name: 'Regular', value: 'Arial, sans-serif', weight: 400 },
+            { name: 'Black', value: "'Arial Black', sans-serif", weight: 900 },
+            { name: 'Narrow', value: "'Arial Narrow', sans-serif", weight: 400 },
+            { name: 'Rounded MT Bold', value: "'Arial Rounded MT Bold', sans-serif", weight: 700 }
+          ]
+        },
+        {
+          name: 'Bahnschrift',
+          variants: [
+            { name: 'Regular', value: 'Bahnschrift, sans-serif', weight: 400 },
+            { name: 'Light', value: "'Bahnschrift Light', sans-serif", weight: 300 },
+            { name: 'SemiLight', value: "'Bahnschrift SemiLight', sans-serif", weight: 350 },
+            { name: 'SemiBold', value: "'Bahnschrift SemiBold', sans-serif", weight: 600 }
+          ]
+        },
+        {
+          name: 'Calibri',
+          variants: [
+            { name: 'Regular', value: 'Calibri, sans-serif', weight: 400 },
+            { name: 'Light', value: "'Calibri Light', sans-serif", weight: 300 }
+          ]
+        },
+        {
+          name: 'Candara',
+          variants: [
+            { name: 'Regular', value: 'Candara, sans-serif', weight: 400 },
+            { name: 'Light', value: "'Candara Light', sans-serif", weight: 300 }
+          ]
+        },
+        { name: 'Century Gothic', variants: [{ name: 'Regular', value: "'Century Gothic', sans-serif", weight: 400 }] },
+        { name: 'Franklin Gothic Medium', variants: [{ name: 'Regular', value: "'Franklin Gothic Medium', sans-serif", weight: 500 }] },
+        { name: 'Gill Sans MT', variants: [{ name: 'Regular', value: "'Gill Sans MT', sans-serif", weight: 400 }] },
+        { name: 'Impact', variants: [{ name: 'Regular', value: 'Impact, sans-serif', weight: 400 }] },
+        { name: 'Lucida Sans Unicode', variants: [{ name: 'Regular', value: "'Lucida Sans Unicode', sans-serif", weight: 400 }] },
+        {
+          name: 'Segoe UI',
+          variants: [
+            { name: 'Regular', value: "'Segoe UI', sans-serif", weight: 400 },
+            { name: 'Light', value: "'Segoe UI Light', sans-serif", weight: 300 },
+            { name: 'Semilight', value: "'Segoe UI Semilight', sans-serif", weight: 350 },
+            { name: 'Semibold', value: "'Segoe UI Semibold', sans-serif", weight: 600 },
+            { name: 'Black', value: "'Segoe UI Black', sans-serif", weight: 900 }
+          ]
+        },
+        { name: 'Tahoma', variants: [{ name: 'Regular', value: 'Tahoma, sans-serif', weight: 400 }] },
+        { name: 'Trebuchet MS', variants: [{ name: 'Regular', value: "'Trebuchet MS', sans-serif", weight: 400 }] },
+        { name: 'Verdana', variants: [{ name: 'Regular', value: 'Verdana, sans-serif', weight: 400 }] }
       ],
       'Serif': [
-        { name: 'Book Antiqua', value: "'Book Antiqua', serif" },
-        { name: 'Bookman Old Style', value: "'Bookman Old Style', serif" },
-        { name: 'Cambria', value: 'Cambria, serif' },
-        { name: 'Century Schoolbook', value: "'Century Schoolbook', serif" },
-        { name: 'Constantia', value: 'Constantia, serif' },
-        { name: 'Garamond', value: 'Garamond, serif' },
-        { name: 'Georgia', value: 'Georgia, serif' },
-        { name: 'Goudy Old Style', value: "'Goudy Old Style', serif" },
-        { name: 'Lucida Bright', value: "'Lucida Bright', serif" },
-        { name: 'Palatino Linotype', value: "'Palatino Linotype', serif" },
-        { name: 'Perpetua', value: 'Perpetua, serif' },
-        { name: 'Rockwell', value: 'Rockwell, serif' },
-        { name: 'Times New Roman', value: "'Times New Roman', serif" }
-      ],
-      'Slab Serif': [
-        { name: 'Rockwell Condensed', value: "'Rockwell Condensed', serif" },
-        { name: 'Rockwell Extra Bold', value: "'Rockwell Extra Bold', serif" }
+        { name: 'Book Antiqua', variants: [{ name: 'Regular', value: "'Book Antiqua', serif", weight: 400 }] },
+        { name: 'Georgia', variants: [{ name: 'Regular', value: 'Georgia, serif', weight: 400 }] },
+        {
+          name: 'Rockwell',
+          variants: [
+            { name: 'Regular', value: 'Rockwell, serif', weight: 400 },
+            { name: 'Condensed', value: "'Rockwell Condensed', serif", weight: 400 },
+            { name: 'Extra Bold', value: "'Rockwell Extra Bold', serif", weight: 800 }
+          ]
+        },
+        { name: 'Times New Roman', variants: [{ name: 'Regular', value: "'Times New Roman', serif", weight: 400 }] }
       ],
       'Script': [
-        { name: 'Brush Script MT', value: "'Brush Script MT', cursive" },
-        { name: 'Edwardian Script ITC', value: "'Edwardian Script ITC', cursive" },
-        { name: 'Freestyle Script', value: "'Freestyle Script', cursive" },
-        { name: 'French Script MT', value: "'French Script MT', cursive" },
-        { name: 'Gabriola', value: 'Gabriola, cursive' },
-        { name: 'Kunstler Script', value: "'Kunstler Script', cursive" },
-        { name: 'Lucida Handwriting', value: "'Lucida Handwriting', cursive" },
-        { name: 'Monotype Corsiva', value: "'Monotype Corsiva', cursive" },
-        { name: 'Palace Script MT', value: "'Palace Script MT', cursive" },
-        { name: 'Papyrus', value: 'Papyrus, cursive' },
-        { name: 'Rage Italic', value: "'Rage Italic', cursive" },
-        { name: 'Segoe Script', value: "'Segoe Script', cursive" },
-        { name: 'Vivaldi', value: 'Vivaldi, cursive' },
-        { name: 'Vladimir Script', value: "'Vladimir Script', cursive" }
+        { name: 'Brush Script MT', variants: [{ name: 'Regular', value: "'Brush Script MT', cursive", weight: 400 }] },
+        { name: 'Gabriola', variants: [{ name: 'Regular', value: 'Gabriola, cursive', weight: 400 }] },
+        { name: 'Papyrus', variants: [{ name: 'Regular', value: 'Papyrus, cursive', weight: 400 }] }
       ],
       'Handwritten': [
-        { name: 'Bradley Hand ITC', value: "'Bradley Hand ITC', cursive" },
-        { name: 'Comic Sans MS', value: "'Comic Sans MS', cursive" },
-        { name: 'Ink Free', value: "'Ink Free', cursive" },
-        { name: 'Kristen ITC', value: "'Kristen ITC', cursive" },
-        { name: 'Segoe Print', value: "'Segoe Print', cursive" },
-        { name: 'Viner Hand ITC', value: "'Viner Hand ITC', cursive" }
+        { name: 'Comic Sans MS', variants: [{ name: 'Regular', value: "'Comic Sans MS', cursive", weight: 400 }] },
+        { name: 'Segoe Print', variants: [{ name: 'Regular', value: "'Segoe Print', cursive", weight: 400 }] }
       ],
       'Monospace': [
-        { name: 'Cascadia Code', value: "'Cascadia Code', monospace" },
-        { name: 'Cascadia Mono', value: "'Cascadia Mono', monospace" },
-        { name: 'Consolas', value: 'Consolas, monospace' },
-        { name: 'Courier New', value: "'Courier New', monospace" },
-        { name: 'Lucida Console', value: "'Lucida Console', monospace" },
-        { name: 'Lucida Sans Typewriter', value: "'Lucida Sans Typewriter', monospace" },
-        { name: 'Source Code Pro', value: "'Source Code Pro', monospace" }
-      ],
-      'Blackletter': [
-        { name: 'Old English Text MT', value: "'Old English Text MT', fantasy" }
+        {
+          name: 'Cascadia Code',
+          variants: [
+            { name: 'Regular', value: "'Cascadia Code', monospace", weight: 400 },
+            { name: 'ExtraLight', value: "'Cascadia Code ExtraLight', monospace", weight: 200 },
+            { name: 'Light', value: "'Cascadia Code Light', monospace", weight: 300 },
+            { name: 'SemiBold', value: "'Cascadia Code SemiBold', monospace", weight: 600 }
+          ]
+        },
+        {
+          name: 'Cascadia Mono',
+          variants: [
+            { name: 'Regular', value: "'Cascadia Mono', monospace", weight: 400 },
+            { name: 'ExtraLight', value: "'Cascadia Mono ExtraLight', monospace", weight: 200 },
+            { name: 'Light', value: "'Cascadia Mono Light', monospace", weight: 300 },
+            { name: 'SemiBold', value: "'Cascadia Mono SemiBold', monospace", weight: 600 }
+          ]
+        },
+        { name: 'Consolas', variants: [{ name: 'Regular', value: 'Consolas, monospace', weight: 400 }] },
+        { name: 'Courier New', variants: [{ name: 'Regular', value: "'Courier New', monospace", weight: 400 }] }
       ],
       'Decorative': [
-        { name: 'Algerian', value: 'Algerian, fantasy' },
-        { name: 'Bauhaus 93', value: "'Bauhaus 93', fantasy" },
-        { name: 'Broadway', value: 'Broadway, fantasy' },
-        { name: 'Chiller', value: 'Chiller, fantasy' },
-        { name: 'Cooper Black', value: "'Cooper Black', fantasy" },
-        { name: 'Curlz MT', value: "'Curlz MT', fantasy" },
-        { name: 'Harrington', value: 'Harrington, fantasy' },
-        { name: 'Jokerman', value: 'Jokerman, fantasy' },
-        { name: 'Permanent Marker', value: "'Permanent Marker', fantasy" },
-        { name: 'Ravie', value: 'Ravie, fantasy' },
-        { name: 'Showcard Gothic', value: "'Showcard Gothic', fantasy" },
-        { name: 'Stencil', value: 'Stencil, fantasy' }
+        { name: 'Cooper Black', variants: [{ name: 'Regular', value: "'Cooper Black', fantasy", weight: 400 }] },
+        { name: 'Jokerman', variants: [{ name: 'Regular', value: 'Jokerman, fantasy', weight: 400 }] },
+        { name: 'Stencil', variants: [{ name: 'Regular', value: 'Stencil, fantasy', weight: 400 }] }
       ]
     };
 
@@ -422,21 +508,66 @@
       bottomFontDropdown: document.getElementById("bottomFontDropdown")
     };
 
-    // Create font picker dropdown
+    // Create font picker dropdown with expandable variants
     function createFontPicker(dropdownEl, hiddenInput, displayEl) {
       let html = '';
       for (const [category, fonts] of Object.entries(fontDatabase)) {
         html += `<div class="font-category">${category}</div>`;
         for (const font of fonts) {
-          html += `<div class="font-option" data-value="${font.value}" data-name="${font.name}">
-            <span class="font-option-preview" style="font-family: ${font.value}">Sample</span>
-            <span class="font-option-name">${font.name}</span>
-          </div>`;
+          const familyId = category.replace(/\s+/g, '-') + '-' + font.name.replace(/\s+/g, '-');
+
+          // If font has multiple variants, make it expandable
+          if (font.variants && font.variants.length > 1) {
+            html += `<div class="font-family" data-family-id="${familyId}">
+              <span class="font-family-expand">►</span>
+              <span class="font-family-preview" style="font-family: ${font.variants[0].value}">Sample</span>
+              <span class="font-family-name">${font.name}</span>
+            </div>`;
+            html += `<div class="font-variants" id="${familyId}-variants">`;
+            for (const variant of font.variants) {
+              html += `<div class="font-variant" data-value="${variant.value}" data-name="${font.name} ${variant.name}">
+                <span class="font-variant-preview" style="font-family: ${variant.value}; font-weight: ${variant.weight}">Sample</span>
+                <span class="font-variant-name">${variant.name}</span>
+              </div>`;
+            }
+            html += `</div>`;
+          } else {
+            // Single variant fonts don't expand
+            const variant = font.variants[0];
+            html += `<div class="font-option" data-value="${variant.value}" data-name="${font.name}">
+              <span class="font-option-preview" style="font-family: ${variant.value}">Sample</span>
+              <span class="font-option-name">${font.name}</span>
+            </div>`;
+          }
         }
       }
       dropdownEl.innerHTML = html;
 
-      // Handle font selection
+      // Handle expandable font families
+      dropdownEl.querySelectorAll('.font-family').forEach(family => {
+        family.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const familyId = family.getAttribute('data-family-id');
+          const variantsDiv = document.getElementById(familyId + '-variants');
+          family.classList.toggle('expanded');
+          variantsDiv.classList.toggle('show');
+        });
+      });
+
+      // Handle variant selection
+      dropdownEl.querySelectorAll('.font-variant').forEach(variant => {
+        variant.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const value = variant.getAttribute('data-value');
+          const name = variant.getAttribute('data-name');
+          hiddenInput.value = value;
+          displayEl.textContent = name;
+          dropdownEl.classList.remove('open');
+          updatePreview();
+        });
+      });
+
+      // Handle single font selection
       dropdownEl.querySelectorAll('.font-option').forEach(option => {
         option.addEventListener('click', () => {
           const value = option.getAttribute('data-value');
@@ -500,13 +631,13 @@
       // Settings text
       const settings = `
 Top text: "${els.topText.value}"
-Top font: ${els.topFont.options[els.topFont.selectedIndex].text}
+Top font: ${els.topFontDisplay.textContent}
 Top size: ${els.topSize.value}px
 Top color: ${els.topColor.value}
 Top position: X=${els.topX.value}px, Y=${els.topY.value}px
 
 Bottom text: "${els.bottomText.value}"
-Bottom font: ${els.bottomFont.options[els.bottomFont.selectedIndex].text}
+Bottom font: ${els.bottomFontDisplay.textContent}
 Bottom size: ${els.bottomSize.value}px
 Bottom color: ${els.bottomColor.value}
 Bottom position: X=${els.bottomX.value}px, Y=${els.bottomY.value}px
